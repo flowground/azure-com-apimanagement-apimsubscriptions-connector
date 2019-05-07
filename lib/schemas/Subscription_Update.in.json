@@ -1,0 +1,103 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "serviceName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50,
+            "pattern": "^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$"
+        },
+        "sid": {
+            "required": true,
+            "type": "string",
+            "maxLength": 256,
+            "pattern": "^[^*#&+:<>?]+$"
+        },
+        "notify": {
+            "required": false,
+            "type": "boolean"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Subscription update details.",
+            "properties": {
+                "properties": {
+                    "description": "Subscription Update contract properties.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "allowTracing": {
+                            "description": "Determines whether tracing can be enabled",
+                            "type": "boolean"
+                        },
+                        "displayName": {
+                            "description": "Subscription name.",
+                            "type": "string"
+                        },
+                        "expirationDate": {
+                            "description": "Subscription expiration date. The setting is for audit purposes only and the subscription is not automatically expired. The subscription lifecycle can be managed by using the `state` property. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "ownerId": {
+                            "description": "User identifier path: /users/{userId}",
+                            "type": "string"
+                        },
+                        "primaryKey": {
+                            "description": "Primary subscription key.",
+                            "maxLength": 256,
+                            "minLength": 1,
+                            "type": "string"
+                        },
+                        "scope": {
+                            "description": "Scope like /products/{productId} or /apis or /apis/{apiId}",
+                            "type": "string"
+                        },
+                        "secondaryKey": {
+                            "description": "Secondary subscription key.",
+                            "maxLength": 256,
+                            "minLength": 1,
+                            "type": "string"
+                        },
+                        "state": {
+                            "description": "Subscription state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated.",
+                            "enum": [
+                                "suspended",
+                                "active",
+                                "expired",
+                                "submitted",
+                                "rejected",
+                                "cancelled"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": false,
+                                "name": "SubscriptionState"
+                            }
+                        },
+                        "stateComment": {
+                            "description": "Comments describing subscription state change by the administrator.",
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "If_Match": {
+            "required": true,
+            "type": "string"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

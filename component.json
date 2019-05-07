@@ -1,0 +1,186 @@
+{
+    "title": "ApiManagementClient",
+    "description": "Use these REST APIs for performing operations on Subscription entity associated with your Azure API Management deployment. The Subscription entity represents the association between a user and a product in API Management. Products contain one or more APIs, and once a product is published, developers can subscribe to the product and begin to use the product's APIs.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/apimanagement-apimsubscriptions/2018-06-01-preview/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow.",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Subscription_List": {
+            "main": "./lib/actions/Subscription_List.js",
+            "title": "Lists all subscriptions of the API Management service instance.",
+            "description": "Lists all subscriptions of the API Management service instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Subscription_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Subscription_Delete": {
+            "main": "./lib/actions/Subscription_Delete.js",
+            "title": "Deletes the specified subscription.",
+            "description": "Deletes the specified subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Subscription_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Subscription_Get": {
+            "main": "./lib/actions/Subscription_Get.js",
+            "title": "Gets the specified Subscription entity.",
+            "description": "Gets the specified Subscription entity.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Subscription_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Subscription_GetEntityTag": {
+            "main": "./lib/actions/Subscription_GetEntityTag.js",
+            "title": "Gets the entity state (Etag) version of the apimanagement subscription specified by its identifier.",
+            "description": "Gets the entity state (Etag) version of the apimanagement subscription specified by its identifier.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Subscription_GetEntityTag.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Subscription_Update": {
+            "main": "./lib/actions/Subscription_Update.js",
+            "title": "Updates the details of a subscription specified by its identifier.",
+            "description": "Updates the details of a subscription specified by its identifier.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Subscription_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Subscription_CreateOrUpdate": {
+            "main": "./lib/actions/Subscription_CreateOrUpdate.js",
+            "title": "Creates or updates the subscription of specified user to the specified product.",
+            "description": "Creates or updates the subscription of specified user to the specified product.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Subscription_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Subscription_RegeneratePrimaryKey": {
+            "main": "./lib/actions/Subscription_RegeneratePrimaryKey.js",
+            "title": "Regenerates primary key of existing subscription of the API Management service instance.",
+            "description": "Regenerates primary key of existing subscription of the API Management service instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Subscription_RegeneratePrimaryKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Subscription_RegenerateSecondaryKey": {
+            "main": "./lib/actions/Subscription_RegenerateSecondaryKey.js",
+            "title": "Regenerates secondary key of existing subscription of the API Management service instance.",
+            "description": "Regenerates secondary key of existing subscription of the API Management service instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Subscription_RegenerateSecondaryKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
